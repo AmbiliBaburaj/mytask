@@ -1,0 +1,42 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheets" href="{% static 'style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="description" content="{% block metadescription%}{%endblock %}">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+
+
+    form{ background-color:aqua; width:30%; padding:20px;border-radius:10px;}
+    h1{ color:red;}
+</style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+
+<h1>REGISTRATION</h1>
+<form action="register" method="POST">
+    {% csrf_token %}
+   <div class="mb-3">
+       <div class="container-fluid">
+      <label for="formGroupExampleInput" class="form-label">Username</label>
+      <input type="text" class="form-control" name="username" id="formGroupExampleInput" placeholder="username"><br><br>
+   </div>
+   <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Password</label>
+        <input type="password" class="form-control"  name="password" id="formGroupExampleInput2" placeholder="Enter your password"><br><br>
+       <div>
+           <label for="formGroupExampleInput2" class="form-label">Confirm Password</label>
+           <input type="password" class="form-control" name="password1" id="formGroupExampleInput3" placeholder="Re Enter password"><br><br>
+       </div>
+  </div>
+
+    <a class="button btn btn-primary" href="{% url 'bankapp:login' %}" type="submit">Submit</a>
+    <a class="button btn btn-primary" href="{% url 'bankapp:home' %}">Confirm</a>
+    </div>
+</form>
+</html>
+{% endblock %}
